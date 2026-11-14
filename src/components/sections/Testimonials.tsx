@@ -164,7 +164,7 @@ export function Testimonials() {
     : {
         initial:     { opacity: 0, y: 24 },
         whileInView: { opacity: 1, y: 0 },
-        transition:  { duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] as const },
+        transition:  { duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
         viewport:    { once: true, margin: "0px 0px -60px 0px" },
       };
 
