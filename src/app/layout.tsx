@@ -1,37 +1,35 @@
 /**
  * src/app/layout.tsx — Root layout
  *
- * Loads Manrope (display/headings) and DM Sans (body) from Google Fonts via
- * next/font. Each font is exposed as a CSS variable on <html> so globals.css
- * can assign them to --font-display and --font-sans.
+ * Fonts are self-hosted via @fontsource-variable (woff2 files ship inside
+ * node_modules — no network call to Google at build time or runtime).
+ * CSS variable names are kept identical so globals.css needs no changes:
+ *  --font-manrope  → used as var(--font-display)
+ *  --font-dmsans   → used as var(--font-sans)
  *
- * Font weights loaded:
- *  Manrope: 400 500 600 700 800  (semibold through extrabold for headings)
- *  DM Sans: 400 500 600          (regular, medium, semibold for body)
+ * Font weights covered by the variable fonts:
+ *  Manrope:  100–800 (uses 400 500 600 700 800 in the design)
+ *  DM Sans:  100–700 (uses 400 500 600 in the design)
  */
 
 import type { Metadata } from "next";
-import { Manrope, DM_Sans } from "next/font/google";
+import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+import "@fontsource-variable/manrope";
+import "@fontsource-variable/dm-sans";
 import "@/app/globals.css";
 
-// ─── Font definitions ─────────────────────────────────────────────────────────
+// ─── Font CSS variables ───────────────────────────────────────────────────────
+// @fontsource-variable imports inject the @font-face rules; we set the CSS
+// variables that globals.css reads via inline style on <html>.
+// The variable names deliberately mirror what next/font/google would have set.
 
-const manrope = Manrope({
-  subsets:  ["latin"],
-  weight:   ["400", "500", "600", "700", "800"],
-  variable: "--font-manrope",
-  display:  "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets:  ["latin"],
-  weight:   ["400", "500", "600"],
-  variable: "--font-dmsans",
-  display:  "swap",
-});
+const fontVars = {
+  "--font-manrope": "'Manrope Variable', Manrope, system-ui, sans-serif",
+  "--font-dmsans":  "'DM Sans Variable', 'DM Sans', system-ui, sans-serif",
+} as React.CSSProperties;
 
 // ─── Default metadata ─────────────────────────────────────────────────────────
 
@@ -77,7 +75,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en-IN"
-      className={`${manrope.variable} ${dmSans.variable}`}
+      style={fontVars}
       suppressHydrationWarning
     >
       <body>
