@@ -35,7 +35,7 @@ const cardAnim = (i: number) => ({
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 },
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: i * 0.1 },
   },
 });
 
@@ -59,7 +59,7 @@ export function Projects() {
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
         >
           <div className="mb-6 inline-flex items-center gap-3">
             <span className="h-px w-10" style={{ background: CITRUS }} />

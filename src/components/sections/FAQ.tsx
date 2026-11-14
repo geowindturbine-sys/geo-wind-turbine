@@ -66,7 +66,7 @@ export default function FAQ() {
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           className="mx-auto max-w-[600px] text-center"
         >
           <div className="mb-6 inline-flex items-center gap-3">
@@ -102,7 +102,7 @@ export default function FAQ() {
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: 0.15 }}
           className="mt-10 flex flex-wrap justify-center gap-2.5"
           role="group"
           aria-label="Filter by category"
@@ -135,7 +135,7 @@ export default function FAQ() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               className="space-y-3"
             >
               {filtered.map((item, i) => {
@@ -145,7 +145,7 @@ export default function FAQ() {
                     key={item.id}
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: i * 0.05 }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: i * 0.05 }}
                     className="overflow-hidden rounded-2xl border"
                     style={{ background: "#FFFFFF", borderColor: isOpen ? CITRUS : BORDER }}
                   >
@@ -183,7 +183,7 @@ export default function FAQ() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                         >
                           <div
                             className="border-t px-6 pb-6 pt-5 sm:px-7 sm:pb-7"

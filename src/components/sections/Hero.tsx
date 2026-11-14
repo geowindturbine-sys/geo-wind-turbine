@@ -54,7 +54,7 @@ const reveal = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
 
@@ -68,7 +68,7 @@ const headingLineVariant = {
     transition: {
       delay: 0.08 + i * 0.1,
       duration: 0.8,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   }),
 };
@@ -80,7 +80,7 @@ const imageEntrance = (reduced: boolean) => ({
   transition: {
     duration: reduced ? 0 : 1.2,
     delay: reduced ? 0 : 0.15,
-    ease: [0.22, 1, 0.36, 1],
+    ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
   },
 });
 
@@ -90,7 +90,7 @@ const chipReveal = {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { delay: d, duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: d, duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   }),
 };
 
@@ -436,7 +436,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="
               absolute left-3 top-3
               z-10
@@ -603,7 +603,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.0, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ delay: 1.0, duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
         className="relative border-t border-[#DFE5D9] bg-[#F4F5EC]"
       >
         <div

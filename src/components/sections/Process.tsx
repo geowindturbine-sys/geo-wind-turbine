@@ -36,7 +36,7 @@ const lineReveal = {
   hidden:  { scaleX: 0 },
   visible: {
     scaleX: 1,
-    transition: { duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.2 },
+    transition: { duration: 1.4, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: 0.2 },
   },
 };
 
@@ -45,7 +45,7 @@ const nodeReveal = (i: number) => ({
   visible: {
     scale: 1,
     opacity: 1,
-    transition: { duration: 0.45, ease: [0.34, 1.56, 0.64, 1], delay: 0.3 + i * 0.12 },
+    transition: { duration: 0.45, ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number], delay: 0.3 + i * 0.12 },
   },
 });
 
@@ -54,7 +54,7 @@ const cardReveal = (i: number) => ({
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.45 + i * 0.1 },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: 0.45 + i * 0.1 },
   },
 });
 
@@ -63,7 +63,7 @@ const stepperItem = (i: number) => ({
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: i * 0.1 },
   },
 });
 
@@ -91,7 +91,7 @@ export default function Process() {
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           className="mx-auto max-w-[600px] text-center"
         >
           <div className="mb-6 inline-flex items-center gap-3">
