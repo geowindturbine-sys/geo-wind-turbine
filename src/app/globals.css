@@ -1,0 +1,318 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────────────────────────────────
+ *
+ * CITRUS EARTH — Bold, Bright, Fresh & Industrial
+ *
+ * Edit colour values here to restyle the entire site. Every CSS variable
+ * defined below is the single source of truth for colour, typography, and
+ * motion. Tailwind utilities are generated from these tokens via @theme inline.
+ *
+ * Mirror structural changes (new keys, removed keys) in constants/theme.ts.
+ *
+ * Phase 4 typography update: Manrope (headings) + DM Sans (body), per brief.
+ * ──────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Backgrounds ─────────────────────────────────────────────────────── */
+  --color-bg:           #FAF9F2;  /* Warm Ivory — primary page canvas        */
+  --color-bg-secondary: #EEF2E8;  /* Pale Sage — alternating section bg      */
+  --color-surface:      #FFFFFF;  /* Card / modal surface                    */
+  --color-surface-alt:  #EEF2E8;  /* Nested panel / hover surface            */
+
+  /* ── Deep section (enquiry banner, footer, tech showcase) ────────────── */
+  --color-deep:         #344B38;  /* Forest Olive — dark section background  */
+  --color-deep-dark:    #263A2A;  /* Darker forest for hover states          */
+
+  /* ── Brand colours ───────────────────────────────────────────────────── */
+  --color-primary:      #26352B;  /* Deep Forest Charcoal — primary brand    */
+  --color-primary-dark: #1A2620;  /* Darker for hover/pressed states         */
+  --color-primary-light:#3D5244;  /* Lighter for hover states                */
+
+  --color-secondary:    #A7C957;  /* Fresh Citrus Green — secondary          */
+  --color-secondary-light:#C2DA79;/* Light citrus for tints                  */
+
+  --color-accent:       #E8EF83;  /* Soft Citrus Yellow — CTA highlights     */
+  --color-accent-dark:  #D4DC4A;  /* Pressed / active citrus                 */
+  --color-accent-fg:    #26352B;  /* Text on citrus-yellow backgrounds       */
+
+  /* ── Borders ─────────────────────────────────────────────────────────── */
+  --color-border:        #DFE5D9; /* Soft Sage — standard border             */
+  --color-border-subtle: #EBF0E6; /* Very light sage — dividers / hairlines  */
+
+  /* ── Typography ──────────────────────────────────────────────────────── */
+  --color-text-primary:  #26352B; /* Deep Forest — headings, high emphasis   */
+  --color-text-body:     #3A4A3C; /* Slightly lighter — body copy            */
+  --color-text-secondary:#69756A; /* Muted Olive Grey — labels, captions     */
+  --color-text-disabled: #B4BAB2; /* Disabled / placeholder text             */
+  --color-text-on-primary:#FFFFFF;/* White text on olive backgrounds         */
+  --color-text-on-deep:   #FFFFFF;/* White text on forest-olive backgrounds  */
+
+  /* ── Font families (loaded via next/font in layout.tsx) ─────────────── */
+  --font-display: var(--font-manrope, "Manrope", system-ui, sans-serif);
+  --font-sans:    var(--font-dmsans,  "DM Sans", system-ui, sans-serif);
+
+  /* ── Shadows ─────────────────────────────────────────────────────────── */
+  --shadow-card:       0 1px 3px rgba(38, 53, 43, 0.06), 0 4px 16px rgba(38, 53, 43, 0.08);
+  --shadow-card-hover: 0 4px 12px rgba(38, 53, 43, 0.12), 0 12px 32px rgba(38, 53, 43, 0.10);
+  --shadow-btn:        0 1px 2px rgba(38, 53, 43, 0.20);
+  --shadow-nav:        0 1px 0 var(--color-border), 0 4px 16px rgba(38, 53, 43, 0.06);
+
+  /* ── Gradients ───────────────────────────────────────────────────────── */
+  --gradient-hero-bg:   linear-gradient(160deg, #FAF9F2 0%, #EDF2E6 100%);
+  --gradient-card-bg:   linear-gradient(145deg, #FFFFFF 0%, #F5F8F2 100%);
+  --gradient-divider:   linear-gradient(90deg, transparent 0%, #DFE5D9 50%, transparent 100%);
+  --gradient-primary:   linear-gradient(135deg, #3D5244 0%, #26352B 60%, #1A2620 100%);
+  --gradient-green:     linear-gradient(135deg, #A7C957 0%, #7FAA3A 100%);
+  --gradient-deep:      linear-gradient(135deg, #3D5244 0%, #344B38 60%, #263A2A 100%);
+
+  /* ── Transitions ─────────────────────────────────────────────────────── */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ─── Tailwind v4 custom utility registration ────────────────────────────────
+ *
+ * Registers every CSS variable above as a Tailwind utility.
+ * Adding a new token: define it in :root above, then add the matching line here.
+ * ──────────────────────────────────────────────────────────────────────────── */
+@theme inline {
+  /* Fonts */
+  --font-display:          var(--font-display);
+  --font-sans:             var(--font-sans);
+
+  /* Backgrounds */
+  --color-bg:              var(--color-bg);
+  --color-bg-secondary:    var(--color-bg-secondary);
+  --color-surface:         var(--color-surface);
+  --color-surface-alt:     var(--color-surface-alt);
+  --color-deep:            var(--color-deep);
+  --color-deep-dark:       var(--color-deep-dark);
+
+  /* Brand */
+  --color-primary:         var(--color-primary);
+  --color-primary-dark:    var(--color-primary-dark);
+  --color-primary-light:   var(--color-primary-light);
+  --color-secondary:       var(--color-secondary);
+  --color-secondary-light: var(--color-secondary-light);
+  --color-accent:          var(--color-accent);
+  --color-accent-dark:     var(--color-accent-dark);
+  --color-accent-fg:       var(--color-accent-fg);
+
+  /* Borders */
+  --color-border:          var(--color-border);
+  --color-border-subtle:   var(--color-border-subtle);
+
+  /* Typography */
+  --color-text-primary:    var(--color-text-primary);
+  --color-text-body:       var(--color-text-body);
+  --color-text-secondary:  var(--color-text-secondary);
+  --color-text-disabled:   var(--color-text-disabled);
+  --color-text-on-primary: var(--color-text-on-primary);
+  --color-text-on-deep:    var(--color-text-on-deep);
+}
+
+/* ─── Base reset ─────────────────────────────────────────────────────────────
+ *
+ * Minimal normalisation on top of Tailwind's Preflight.
+ * ──────────────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Fluid root font: 15px on mobile → 18px at 1440px+ desktop.
+     All rem-based sizes now scale proportionally with viewport width.
+     Fixed-px overrides on individual elements remain unchanged.       */
+  font-size: clamp(15px, 1.05vw + 0.5px, 18px);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  color:            var(--color-text-body);
+  font-family:      var(--font-sans);
+  line-height:      1.65;
+}
+
+/* ─── Typography defaults ────────────────────────────────────────────────────
+ *
+ * Headings use Manrope (display); body uses DM Sans (sans).
+ * ──────────────────────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color:       var(--color-text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+a {
+  color:           inherit;
+  text-decoration: none;
+}
+
+img, video {
+  max-width: 100%;
+  display:   block;
+}
+
+/* ─── Utility classes ────────────────────────────────────────────────────────
+ *
+ * .text-gradient-primary — forest-olive gradient text (use sparingly)
+ * .text-gradient-green   — citrus-green gradient text
+ * .eyebrow               — small uppercase tracking label above section titles
+ * ──────────────────────────────────────────────────────────────────────────── */
+.text-gradient-primary {
+  background:              var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip:         text;
+}
+
+.text-gradient-green {
+  background:              var(--gradient-green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip:         text;
+}
+
+.eyebrow {
+  font-family:    var(--font-display);
+  font-size:      0.7rem;
+  font-weight:    700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color:          var(--color-secondary);
+}
+
+.eyebrow-dark {
+  font-family:    var(--font-display);
+  font-size:      0.7rem;
+  font-weight:    700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color:          var(--color-accent);
+}
+
+/* ─── Focus ring ─────────────────────────────────────────────────────────────
+ *
+ * Global focus-visible ring using the secondary citrus green.
+ * ──────────────────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline:        2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* ─── Scrollbar styling ──────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-secondary); }
+
+/* ─── Selection colour ───────────────────────────────────────────────────── */
+::selection {
+  background: rgba(167, 201, 87, 0.25);
+  color:      var(--color-text-primary);
+}
+
+/* ─── Reduced-motion ─────────────────────────────────────────────────────────
+ *
+ * Respects prefers-reduced-motion for all CSS transitions and animations.
+ * Framer Motion variants must also check this — handled in animations.ts.
+ * ──────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1      !important;
+    transition-duration:       0.01ms !important;
+    scroll-behavior:           auto   !important;
+  }
+}
+
+/* ─── Homepage section navigation ─────────────────────── */
+
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+/* ─── Selection and interaction polish ────────────────── */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─── Image rendering ─────────────────────────────────── */
+
+img {
+  user-select: none;
+}
+
+/* ─── Mobile viewport refinements ─────────────────────── */
+
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 82px;
+  }
+}
+/* ─── Navbar desktop grid layout ──────────────────────── */
+/* Outside any @layer so this wins over Tailwind's utility layer.           */
+
+@layer utilities {
+  #main-nav {
+    display: flex;
+  }
+
+  #desktop-nav-links,
+  #desktop-cta {
+    display: none;
+  }
+
+  /* Desktop nav needs at least 1280 px — 8 nav links + logo + CTA don't fit at 1032 px (iPad Pro 13).
+     Between 1024 and 1279 px keep the hamburger so nothing gets clipped. */
+  @media (min-width: 1280px) {
+    #main-nav {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+    }
+    #desktop-nav-links {
+      display: flex;
+    }
+    #desktop-cta {
+      display: flex;
+    }
+    #mobile-menu-btn {
+      display: none;
+    }
+  }
+}
+
+/* ─── Hero viewport optimisations ────────────────────── */
+/* Hide scroll indicator wrapper on short viewports so CTAs stay above the fold.
+   We target the wrapper (#hero-scroll-indicator-wrapper) because it carries the
+   marginTop; hiding only the inner element still leaves that gap. */
+@layer utilities {
+  @media (min-width: 1024px) and (max-height: 820px) {
+    #hero-scroll-indicator-wrapper {
+      display: none !important;
+    }
+  }
+
+  /* CTA button row: wrap on small screens, single row on desktop.
+     At 1366×768 the left panel is ~443 px wide; two buttons fit side-by-side.
+     flex-wrap is removed from inline style and controlled here. */
+  #hero-cta-buttons {
+    flex-wrap: wrap;
+  }
+  @media (min-width: 1024px) {
+    #hero-cta-buttons {
+      flex-wrap: nowrap;
+    }
+  }
+}
