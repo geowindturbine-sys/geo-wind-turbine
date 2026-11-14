@@ -18,7 +18,7 @@ import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X, Wind, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { NAV_LINKS } from "@/lib/data";
 import type Lenis from "lenis";
 
@@ -26,26 +26,28 @@ import type Lenis from "lenis";
 const ANNOUNCEMENT = "🇮🇳  Made in India · Now serving 15+ states across the country";
 
 // ── Animation variants ────────────────────────────────────────────────────────
-const mobileMenuVariants = {
+const EASE_CURVE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const mobileMenuVariants: Variants = {
   hidden: { opacity: 0, y: -8 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.35, ease: EASE_CURVE },
   },
   exit: {
     opacity: 0,
     y: -8,
-    transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.25, ease: EASE_CURVE },
   },
 };
 
-const mobileItemVariants = {
+const mobileItemVariants: Variants = {
   hidden: { opacity: 0, x: -12 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { delay: i * 0.06, duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: i * 0.06, duration: 0.3, ease: EASE_CURVE },
   }),
 };
 
@@ -131,7 +133,7 @@ export default function Navbar() {
             <motion.div
               initial={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.3, ease: EASE_CURVE }}
               className="overflow-hidden"
             >
               <div
